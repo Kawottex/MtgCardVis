@@ -6,8 +6,8 @@ export function buildMTGCardFilter(params: MTGCardFilters)  {
     if (params.name) {
         filter.name = { $regex: params.name, $options: 'i' };
     }
-    if (params.set) {
-        filter.set = params.set;
+    if (params.expansion) {
+        filter.expansion = params.expansion;
     }
     if (params.rarity) {
         filter.rarity = params.rarity;

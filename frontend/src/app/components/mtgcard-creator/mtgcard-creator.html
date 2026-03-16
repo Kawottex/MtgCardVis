@@ -1,0 +1,51 @@
+<form class="mtgcard-form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="image">Image :</label>
+    <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+
+  <div class="form-group">
+    <label for="name">Nom de la carte :</label>
+    <input type="text" id="name" [(ngModel)]="card.name" name="name" required />
+  </div>
+
+  <div class="form-group">
+    <label for="manaCost">Coût en mana :</label>
+    <input type="text" id="manaCost" [(ngModel)]="card.manaCost" name="manaCost" required />
+  </div>
+
+  <div class="form-group colors">
+    <label>Couleurs :</label>
+    <label><input type="checkbox" [(ngModel)]="card.colors.red" name="red" /> Rouge</label>
+    <label><input type="checkbox" [(ngModel)]="card.colors.black" name="black" /> Noir</label>
+    <label><input type="checkbox" [(ngModel)]="card.colors.blue" name="blue" /> Bleu</label>
+    <label><input type="checkbox" [(ngModel)]="card.colors.green" name="green" /> Vert</label>
+    <label><input type="checkbox" [(ngModel)]="card.colors.white" name="white" /> Blanc</label>
+  </div>
+
+  <div class="form-group">
+    <label for="power">Force :</label>
+    <input type="number" id="power" [(ngModel)]="card.power" name="power" min="0" />
+  </div>
+
+  <div class="form-group">
+    <label for="toughness">Endurance :</label>
+    <input type="number" id="toughness" [(ngModel)]="card.toughness" name="toughness" min="0" />
+  </div>
+
+  <div class="form-group">
+    <label for="expansion">Extension :</label>
+    <select id="expansion" [(ngModel)]="card.expansion" name="expansion" required>
+      <option *ngFor="let ext of expansions" [value]="ext">{{ ext }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="rarity">Rareté :</label>
+    <select id="rarity" [(ngModel)]="card.rarity" name="rarity" required>
+      <option *ngFor="let rarity of rarities" [value]="rarity">{{ rarity }}</option>
+    </select>
+  </div>
+
+  <button type="submit">Créer la carte</button>
+</form>

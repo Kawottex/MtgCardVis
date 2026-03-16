@@ -1,21 +1,27 @@
 export interface MTGCard {
     _id: string;
     name: string;
-    set: string;
+    expansion: string;
     rarity: string;
     manaCost: number;
-    white: boolean;
-    blue: boolean;
-    black: boolean;
-    red: boolean;
-    green: boolean;
+    colors: {
+        red: boolean;
+        black: boolean;
+        blue: boolean;
+        green: boolean;
+        white: boolean;
+    };
     power: number;
     toughness: number;
+    image : {
+        data: Uint8Array,
+        contentType: String
+    }
 }
 
 export interface MTGCardFilters {
     name?: string;
-    set?: string;
+    expansion?: string;
     rarity?: string;
     manaCost?: number;
     power?: number;
