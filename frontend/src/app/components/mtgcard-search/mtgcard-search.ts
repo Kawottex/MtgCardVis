@@ -13,13 +13,15 @@ import { MtgCardCreatorComponent } from '../mtgcard-creator/mtgcard-creator';
   standalone: true,
 })
 export class MtgCardSearchComponent {
-  cards = [];
+  outCards = [];
 
   constructor(private mtgCardService: MtgCardService) {}
 
   onFiltersApplied(filters: MTGCardFilters) {
     this.mtgCardService.getMTGCards(filters).subscribe((data: any) => {
-      this.cards = data;
+      console.log(typeof data[0].image.data); // 'object'
+      this.outCards = data;
+      console.log(data);
     });
   }
 }

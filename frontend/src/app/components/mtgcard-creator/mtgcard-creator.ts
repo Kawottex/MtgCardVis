@@ -13,7 +13,6 @@ import { MTGCard } from '@mtgcardvis/shared';
 })
 export class MtgCardCreatorComponent {
   card: MTGCard = {
-    _id : '',
     name: '',
     manaCost: 0,
     colors: {
@@ -28,7 +27,7 @@ export class MtgCardCreatorComponent {
     expansion: '',
     rarity: '',
     image: {
-      data: new Uint8Array(),
+      data: [],
       contentType: ''
     }
   };
@@ -44,7 +43,7 @@ export class MtgCardCreatorComponent {
       const reader = new FileReader();
       reader.onload = () => {
         const arrayBuffer = reader.result as ArrayBuffer;
-        this.card.image.data = new Uint8Array(arrayBuffer);
+        this.card.image.data = Array.from(new Uint8Array(arrayBuffer));
         this.card.image.contentType = file.type;
       };
       reader.readAsArrayBuffer(file);

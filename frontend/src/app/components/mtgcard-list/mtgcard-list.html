@@ -1,3 +1,11 @@
-<li *ngFor="let card of cards">
-  {{ card.name }}
-</li>
+<ul class="card-list">
+  <li class="card-item" *ngFor="let card of inCards">
+    <img
+      *ngIf="card.image.data.length"
+      [src]="'data:' + card.image.contentType + ';base64,' + (card.image.data | base64)"
+      alt="{{ card.name }}"
+      class="card-image"
+    />
+    <div class="card-name">{{ card.name }}</div>
+  </li>
+</ul>

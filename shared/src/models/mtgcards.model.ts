@@ -1,5 +1,4 @@
 export interface MTGCard {
-    _id: string;
     name: string;
     expansion: string;
     rarity: string;
@@ -14,8 +13,8 @@ export interface MTGCard {
     power: number;
     toughness: number;
     image : {
-        data: Uint8Array,
-        contentType: String
+        data: number[],
+        contentType: string
     }
 }
 
