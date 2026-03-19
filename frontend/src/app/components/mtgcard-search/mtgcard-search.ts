@@ -19,7 +19,6 @@ export class MtgCardSearchComponent {
 
   onFiltersApplied(filters: MTGCardFilters) {
     this.mtgCardService.getMTGCards(filters).subscribe((data: any) => {
-      console.log(typeof data[0].image.data); // 'object'
       this.outCards = data;
       console.log(data);
     });

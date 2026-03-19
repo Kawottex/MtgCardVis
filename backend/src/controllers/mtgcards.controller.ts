@@ -8,12 +8,8 @@ export async function getMTGCards(req: Request, res: Response) {
     const cards = await MTGCardModel.find(filter);
     const result = cards.map(card => {
         const obj = card.toObject();
-        if (obj.image && obj.image.data && Buffer.isBuffer(obj.image.data)) {
-            obj.image.data = Array.from(obj.image.data);
-        }
         return obj;
     });
-    console.log(typeof result[0].image.data);
     res.json(result);
 }
 
