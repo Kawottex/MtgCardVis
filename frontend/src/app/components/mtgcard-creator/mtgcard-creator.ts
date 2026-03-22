@@ -12,6 +12,10 @@ import { MTGCard } from '@mtgcardvis/shared';
   standalone: true,
 })
 export class MtgCardCreatorComponent {
+  expansions = ['Alpha', 'Beta', 'Gamma'];
+  rarities = ['Common', 'Uncommon', 'Rare', 'Mythic Rare'];
+
+  /** Valeurs par défaut = 1re entrée des listes (doit matcher une [value] du <select>). */
   card: MTGCard = {
     name: '',
     manaCost: 0,
@@ -24,16 +28,13 @@ export class MtgCardCreatorComponent {
     },
     power: 0,
     toughness: 0,
-    expansion: '',
-    rarity: '',
+    expansion: 'Alpha',
+    rarity: 'Common',
     image: {
       data: [],
       contentType: ''
     }
   };
-
-  expansions = ['Alpha', 'Beta', 'Gamma'];
-  rarities = ['Common', 'Uncommon', 'Rare', 'Mythic Rare'];
 
   constructor(private mtgCardService: MtgCardService) {}
 

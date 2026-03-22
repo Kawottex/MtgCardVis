@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MtgCardService } from '../../services/mtgcard.service';
-import { MTGCardFilters } from '@mtgcardvis/shared';
+import { MTGCard, MTGCardFilters } from '@mtgcardvis/shared';
 import { MtgCardListComponent } from '../mtgcard-list/mtgcard-list';
 import { MtgCardSearchFiltersComponent } from '../mtgcard-search-filters/mtgcard-search-filters';
 import { MtgCardCreatorComponent } from '../mtgcard-creator/mtgcard-creator';
@@ -13,14 +13,14 @@ import { MtgCardCreatorComponent } from '../mtgcard-creator/mtgcard-creator';
   standalone: true,
 })
 export class MtgCardSearchComponent {
-  outCards = [];
+  /** Signal : compatible zoneless — la réponse HTTP met bien à jour la liste au 1er clic. */
+  outCards = signal<MTGCard[]>([]);
 
   constructor(private mtgCardService: MtgCardService) {}
 
   onFiltersApplied(filters: MTGCardFilters) {
-    this.mtgCardService.getMTGCards(filters).subscribe((data: any) => {
-      this.outCards = data;
-      console.log(data);
+    this.mtgCardService.getMTGCards(filters).subscribe((data) => {
+      this.outCards.set(data);
     });
   }
 }

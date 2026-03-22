@@ -2,7 +2,7 @@
   <div class="left-panel">
     <app-mtgcard-search-filters (filtersApplied)="onFiltersApplied($event)"></app-mtgcard-search-filters>
     <div class="card-list-section">
-      <app-mtgcard-list [inCards]="outCards"></app-mtgcard-list>
+      <app-mtgcard-list [inCards]="outCards()"></app-mtgcard-list>
     </div>
   </div>
   <div class="right-panel">
