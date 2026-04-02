@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MtgcardSearch } from './mtgcard-search';
+import { MtgCardSearchComponent } from './mtgcard-search';
 
-describe('MtgcardSearch', () => {
-  let component: MtgcardSearch;
-  let fixture: ComponentFixture<MtgcardSearch>;
+describe('MtgCardSearchComponent', () => {
+  let component: MtgCardSearchComponent;
+  let fixture: ComponentFixture<MtgCardSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MtgcardSearch],
+      imports: [MtgCardSearchComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MtgcardSearch);
+    fixture = TestBed.createComponent(MtgCardSearchComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
